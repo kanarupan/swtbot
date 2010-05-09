@@ -14,16 +14,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.eclipse.swtbot.forms.finder.test.AbstractSWTBotFormsTestCase;
-import org.eclipse.swtbot.forms.finder.widgets.SWTBotHyperlink;
+import org.eclipse.swtbot.forms.finder.widgets.SWTBotExpandableComposite;
 import org.junit.Test;
 
-public class SWTBotHyperlinkTest extends AbstractSWTBotFormsTestCase {
+public class SWTBotExpandableCompositeTest extends AbstractSWTBotFormsTestCase {
 
 	@Test
-	public void findHyperlink() throws Exception {
-		SWTBotHyperlink link = bot.hyperlink();
-		assertNotNull(link);
-		assertEquals("This is an example of a form that is much longer and will need to wrap.", link.getText());
+	public void findExpandableComposite() throws Exception {
+		String title = "Expandable Composite title";
+		SWTBotExpandableComposite composite = bot.expandableComposite(title);
+		assertNotNull(composite);
+		assertEquals(title, composite.getText());
 	}
 	
 }

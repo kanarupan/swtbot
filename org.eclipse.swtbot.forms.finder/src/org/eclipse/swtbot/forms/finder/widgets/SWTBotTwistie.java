@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.eclipse.swtbot.forms.finder.widgets;
 
+import org.eclipse.swtbot.swt.finder.ReferenceBy;
+import org.eclipse.swtbot.swt.finder.SWTBotWidget;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.utils.MessageFormat;
+import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.ui.forms.widgets.Twistie;
 import org.hamcrest.SelfDescribing;
 
@@ -21,6 +25,7 @@ import org.hamcrest.SelfDescribing;
  * @author Chris Aniszczyk &lt;caniszczyk [at] gmail [dot] com&gt;
  * @version $Id$
  */
+@SWTBotWidget(clasz = Twistie.class, preferredName = "twistie", referenceBy = { ReferenceBy.TEXT })
 public class SWTBotTwistie extends SWTBotToggleHyperlink {
 
 	/**
@@ -46,8 +51,10 @@ public class SWTBotTwistie extends SWTBotToggleHyperlink {
 
 	@Override
 	public SWTBotToggleHyperlink click() {
+		log.debug(MessageFormat.format("Clicking on {0}", SWTUtils.getText(widget))); //$NON-NLS-1$
 		internalToggle();
 		sendNotifications();
+		log.debug(MessageFormat.format("Clicked on {0}", SWTUtils.getText(widget))); //$NON-NLS-1$
 		return this;
 	}
 	

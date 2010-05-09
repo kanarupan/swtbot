@@ -13,6 +13,8 @@ package org.eclipse.swtbot.forms.finder.widgets;
 import org.eclipse.swtbot.swt.finder.ReferenceBy;
 import org.eclipse.swtbot.swt.finder.SWTBotWidget;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.results.StringResult;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBotControl;
 import org.eclipse.ui.forms.widgets.ScrolledFormText;
 import org.hamcrest.SelfDescribing;
@@ -45,6 +47,30 @@ public class SWTBotScrolledFormText extends AbstractSWTBotControl<ScrolledFormTe
 	 */
 	public SWTBotScrolledFormText(ScrolledFormText w, SelfDescribing description) throws WidgetNotFoundException {
 		super(w, description);
+	}
+	
+	public String selectionText() {
+		return syncExec(new StringResult() {
+			public String run() {
+				return widget.getFormText().getSelectionText();
+			}
+		});
+	}
+	
+	public String selectedLinkText() {
+		return syncExec(new StringResult() {
+			public String run() {
+				return widget.getFormText().getSelectedLinkText();
+			}
+		});
+	}
+	
+	public void setText(final String text, final boolean parseTags, final boolean expandURLs) {
+		syncExec(new VoidResult() {
+			public void run() {
+				widget.getFormText().setText(text, parseTags, expandURLs);
+			}
+		});
 	}
 
 }

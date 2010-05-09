@@ -14,7 +14,6 @@ import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withId;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withMnemonic;
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withText;
 
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.forms.finder.widgets.SWTBotExpandableComposite;
@@ -331,24 +330,13 @@ public class SWTFormsBot extends SWTBot {
 		Matcher matcher = allOf(widgetOfType(Section.class), withId(value));
 		return new SWTBotSection((Section) widget(matcher, index), matcher);
 	}
-
+	
 	/**
-	 * @param text the text on the widget.
-	 * @return a {@link SWTBotFormText} with the specified <code>text</code>.
+	 * @return a {@link SWTBotFormText}.
 	 */
-	public SWTBotFormText formText(String text) {
-		return formText(text, 0);
-	}
-
-	/**
-	 * @param text the text on the widget.
-	 * @param index the index of the widget.
-	 * @return a {@link SWTBotFormText} with the specified <code>text</code>.
-	 */
-	@SuppressWarnings("unchecked")
-	public SWTBotFormText formText(String text, int index) {
-		Matcher matcher = allOf(widgetOfType(FormText.class), withText(text));
-		return new SWTBotFormText((FormText) widget(matcher, index), matcher);
+	public SWTBotFormText formText() {
+		Matcher matcher = allOf(widgetOfType(FormText.class));
+		return new SWTBotFormText((FormText) widget(matcher, 0), matcher);
 	}
 	
 	/**
@@ -392,22 +380,11 @@ public class SWTFormsBot extends SWTBot {
 	}
 	
 	/**
-	 * @param text the text on the widget.
-	 * @return a {@link SWTBotFormText} with the specified <code>text</code>.
+	 * @return a {@link SWTBotScrolledFormText}.
 	 */
-	public SWTBotScrolledFormText scrolledFormText(String text) {
-		return scrolledFormText(text, 0);
-	}
-
-	/**
-	 * @param text the text on the widget.
-	 * @param index the index of the widget.
-	 * @return a {@link SWTBotScrolledFormText} with the specified <code>text</code>.
-	 */
-	@SuppressWarnings("unchecked")
-	public SWTBotScrolledFormText scrolledFormText(String text, int index) {
-		Matcher matcher = allOf(widgetOfType(ScrolledFormText.class), withText(text));
-		return new SWTBotScrolledFormText((ScrolledFormText) widget(matcher, index), matcher);
+	public SWTBotScrolledFormText scrolledFormText() {
+		Matcher matcher = allOf(widgetOfType(ScrolledFormText.class));
+		return new SWTBotScrolledFormText((ScrolledFormText) widget(matcher, 0), matcher);
 	}
 	
 	/**

@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.swtbot.forms.finder.test.widgets;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
-import org.eclipse.swtbot.forms.finder.test.SWTBotFormsTestCase;
+import org.eclipse.swtbot.forms.finder.test.AbstractSWTBotFormsTestCase;
 import org.eclipse.swtbot.forms.finder.widgets.SWTBotFormText;
 import org.junit.Test;
 
-public class SWTBotFormTextTest extends SWTBotFormsTestCase {
+public class SWTBotFormTextTest extends AbstractSWTBotFormsTestCase {
 
 	@Test
 	public void findsFormText() throws Exception {
@@ -41,8 +41,9 @@ public class SWTBotFormTextTest extends SWTBotFormsTestCase {
 		buf.append("<li style=\"text\" bindent=\"20\" indent=\"40\" value=\"4.\">A list item with text.</li>");
 		buf.append("<p>     leading blanks;      more white \n\n new lines   <br/><br/><br/> \n more <b>   bb   </b>  white  . </p>");
 		buf.append("</form>");
-		SWTBotFormText text = bot.formText(buf.toString());
+		SWTBotFormText text = bot.formText();
 		assertNotNull(text);
+		System.out.println(text.widget.getSelectionText());
 	}
 	
 }

@@ -14,16 +14,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.eclipse.swtbot.forms.finder.test.AbstractSWTBotFormsTestCase;
-import org.eclipse.swtbot.forms.finder.widgets.SWTBotHyperlink;
+import org.eclipse.swtbot.forms.finder.widgets.SWTBotImageHyperlink;
 import org.junit.Test;
 
-public class SWTBotHyperlinkTest extends AbstractSWTBotFormsTestCase {
+public class SWTBotImageHyperlinkTest extends AbstractSWTBotFormsTestCase {
 
 	@Test
-	public void findHyperlink() throws Exception {
-		SWTBotHyperlink link = bot.hyperlink();
+	public void findImageHyperlink() throws Exception {
+		SWTBotImageHyperlink link = bot.imageHyperlink();
 		assertNotNull(link);
-		assertEquals("This is an example of a form that is much longer and will need to wrap.", link.getText());
+		assertEquals("Image link with no image", link.getText());
 	}
 	
 }

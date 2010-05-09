@@ -12,16 +12,19 @@ package org.eclipse.swtbot.forms.finder.test.widgets;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.eclipse.swtbot.forms.finder.test.SWTBotFormsTestCase;
+import org.eclipse.swtbot.forms.finder.test.AbstractSWTBotFormsTestCase;
 import org.eclipse.swtbot.forms.finder.widgets.SWTBotScrolledFormText;
 import org.junit.Test;
 
-public class SWTBotScrolledFormTextTest extends SWTBotFormsTestCase {
+public class SWTBotScrolledFormTextTest extends AbstractSWTBotFormsTestCase {
 
 	@Test
 	public void findsScrolledFormText() throws Exception {
-		SWTBotScrolledFormText text = bot.scrolledFormText("Hello, Eclipse Forms");
+		String title = "Hello, Eclipse Forms";
+		SWTBotScrolledFormText text = bot.scrolledFormText();
 		assertNotNull(text);
+		text.setFocus();
+		System.out.println(text.widget.getFormText().getSelectionText());
 	}
 	
 }
